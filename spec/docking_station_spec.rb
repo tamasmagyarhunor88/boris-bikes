@@ -12,4 +12,14 @@ RSpec.describe DockingStation do # this is test for creating an instance of spec
     it 'expects the bike.working? to return true' do
       expect(subject.release_bike).to be_working
     end
+
+    it { is_expected.to respond_to(:dock).with(1).argument }
+
+    it 'docks a bike' do
+      bike = subject.release_bike
+      expect(subject.dock(bike)).to eq(bike)
+    end
+
+    it { is_expected.to respond_to(:docked_bike) }
+
 end
